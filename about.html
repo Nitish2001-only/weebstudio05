@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title></> WeebStudio | About Us</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #4361ee;
+      --primary-dark: #3a0ca3;
+      --primary-light: #4895ef;
+      --secondary: #7209b7;
+      --accent: #4cc9f0;
+      --text: #1a1a2e;
+      --text-light: #6c757d;
+      --light-bg: #f8f9fa;
+      --white: #ffffff;
+      --border: #e9ecef;
+      --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.1);
+      --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
+      --shadow-lg: 0 10px 25px rgba(0, 0, 0, 0.1);
+      --radius-sm: 6px;
+      --radius-md: 12px;
+      --radius-lg: 18px;
+    }
+    
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    
+    body {
+      font-family: 'Inter', sans-serif;
+      color: var(--text);
+      background-color: var(--light-bg);
+      line-height: 1.6;
+    }
+    
+    /* Header Styles */
+    header {
+      background-color: var(--white);
+      box-shadow: var(--shadow-sm);
+      position: fixed;
+      width: 100%;
+      top: 0;
+      z-index: 1000;
+    }
+    
+    .header-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    
+    .logo {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 1.5rem;
+      font-weight: 500;
+      color: var(--primary);
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    
+    .logo span {
+      color: var(--secondary);
+    }
+    
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+    }
+    
+    .nav-links a {
+      color: var(--text);
+      text-decoration: none;
+      font-weight: 500;
+      transition: all 0.2s;
+      position: relative;
+    }
+    
+    .nav-links a:hover {
+      color: var(--primary);
+    }
+    
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: var(--primary);
+      transition: width 0.3s;
+    }
+    
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+    
+    /* Hero Section */
+    .page-hero {
+      min-height: 300px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 8rem 2rem 4rem;
+      background: linear-gradient(135deg, rgba(67, 97, 238, 0.05) 0%, rgba(114, 9, 183, 0.05) 100%);
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .page-hero h1 {
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 1rem;
+      line-height: 1.2;
+    }
+    
+    .page-hero p {
+      font-size: 1.1rem;
+      color: var(--text-light);
+      max-width: 700px;
+      margin: 0 auto;
+    }
+    
+    /* About Content */
+    .about-section {
+      padding: 4rem 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    
+    .about-content {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 3rem;
+    }
+    
+    .about-text {
+      text-align: center;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    
+    .about-text h2 {
+      font-size: 2rem;
+      color: var(--primary);
+      margin-bottom: 1.5rem;
+    }
+    
+    .about-text p {
+      color: var(--text-light);
+      margin-bottom: 1.5rem;
+      line-height: 1.7;
+    }
+    
+    .highlight {
+      background-color: rgba(67, 97, 238, 0.1);
+      padding: 0.2rem 0.5rem;
+      border-radius: var(--radius-sm);
+      font-weight: 500;
+      color: var(--primary);
+    }
+    
+    .made-in-india {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background-color: #FF9933;
+      color: #000080;
+      padding: 0.5rem 1rem;
+      border-radius: var(--radius-sm);
+      font-weight: 600;
+      margin-top: 1rem;
+      border: 1px solid #000080;
+    }
+    
+    /* Why We're Special Section */
+    .special-section {
+      padding: 3rem 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+      background-color: rgba(67, 97, 238, 0.03);
+      border-radius: var(--radius-lg);
+    }
+    
+    .section-title {
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+    
+    .section-title h2 {
+      font-size: 2rem;
+      color: var(--primary);
+      margin-bottom: 1rem;
+    }
+    
+    .section-title p {
+      color: var(--text-light);
+      max-width: 600px;
+      margin: 0 auto;
+    }
+    
+    .special-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 2rem;
+    }
+    
+    .special-card {
+      background-color: var(--white);
+      border-radius: var(--radius-md);
+      padding: 2rem;
+      box-shadow: var(--shadow-md);
+      transition: all 0.3s ease;
+      border: 1px solid rgba(67, 97, 238, 0.1);
+    }
+    
+    .special-card:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--shadow-lg);
+    }
+    
+    .special-icon {
+      width: 60px;
+      height: 60px;
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      color: var(--white);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 1.5rem;
+      font-size: 1.5rem;
+    }
+    
+    .special-card h3 {
+      font-size: 1.25rem;
+      color: var(--text);
+      margin-bottom: 1rem;
+      text-align: center;
+    }
+    
+    .special-card p {
+      color: var(--text-light);
+      text-align: center;
+      line-height: 1.6;
+    }
+    
+    /* Achievements Section */
+    .achievements-section {
+      padding: 4rem 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    
+    .achievements-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 2rem;
+      text-align: center;
+    }
+    
+    .achievement-item {
+      padding: 1.5rem;
+    }
+    
+    .achievement-number {
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: var(--primary);
+      margin-bottom: 0.5rem;
+    }
+    
+    .achievement-label {
+      color: var(--text-light);
+      font-size: 0.9rem;
+    }
+    
+    /* Footer */
+    footer {
+      background-color: var(--white);
+      padding: 4rem 2rem 2rem;
+      border-top: 1px solid var(--border);
+    }
+    
+    .footer-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 2rem;
+    }
+    
+    .footer-logo {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 1.25rem;
+      font-weight: 500;
+      color: var(--primary);
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    
+    .footer-about p {
+      color: var(--text-light);
+      margin-bottom: 1.5rem;
+    }
+    
+    .footer-links h4 {
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 1rem;
+    }
+    
+    .footer-links ul {
+      list-style: none;
+    }
+    
+    .footer-links li {
+      margin-bottom: 0.5rem;
+    }
+    
+    .footer-links a {
+      color: var(--text-light);
+      text-decoration: none;
+      transition: all 0.2s;
+    }
+    
+    .footer-links a:hover {
+      color: var(--primary);
+    }
+    
+    .social-links {
+      display: flex;
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+    
+    .social-links a {
+      color: var(--text-light);
+      font-size: 1.25rem;
+      transition: all 0.2s;
+    }
+    
+    .social-links a:hover {
+      color: var(--primary);
+    }
+    
+    .copyright {
+      text-align: center;
+      margin-top: 3rem;
+      padding-top: 2rem;
+      border-top: 1px solid var(--border);
+      color: var(--text-light);
+      font-size: 0.875rem;
+    }
+    
+    /* Responsive Styles */
+    @media (max-width: 1024px) {
+      .achievements-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+    
+    @media (max-width: 768px) {
+      .page-hero h1 {
+        font-size: 2rem;
+      }
+      
+      .nav-links {
+        gap: 1.5rem;
+      }
+    }
+    
+    @media (max-width: 640px) {
+      .header-container {
+        padding: 1rem;
+      }
+      
+      .page-hero {
+        padding: 6rem 1.5rem 3rem;
+      }
+      
+      .nav-links {
+        display: none;
+      }
+      
+      .achievements-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="header-container">
+      <a href="index.html" class="logo"><span>&lt;/&gt;</span> WeebStudio</a>
+      <nav class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="services.html">Services</a>
+        <a href="about.html" class="active">About Us</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="page-hero">
+    <h1>Why Choose WeebStudio?</h1>
+    <p>Discover how we're revolutionizing web development with affordable excellence</p>
+  </section>
+
+  <section class="about-section">
+    <div class="about-content">
+      <div class="about-text">
+        <h2>India's Most Affordable Web Solutions</h2>
+        <p>At <span class="highlight">WeebStudio</span>, we've cracked the code to delivering <span class="highlight">premium websites at budget prices</span>. Our streamlined processes and talented team allow us to offer the <span class="highlight">cheapest and best service</span> in the industry without cutting corners.</p>
+        
+        <p>Founded in 2020, we've helped over 500 businesses establish their online presence. What started as a small startup is now a thriving company with a proven track record of <span class="highlight">quality, affordability, and innovation</span>.</p>
+        
+        <p>We're proud to be a <span class="highlight">100% Made in India</span> company, combining global standards with local understanding to deliver exactly what our clients need.</p>
+        
+        <div class="made-in-india">
+          <i class="fas fa-flag"></i>
+          <span>Proudly Made in India</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="special-section">
+    <div class="section-title">
+      <h2>Why We're Special</h2>
+      <p>What sets us apart from the competition</p>
+    </div>
+    
+    <div class="special-grid">
+      <div class="special-card">
+        <div class="special-icon">
+          <i class="fas fa-rupee-sign"></i>
+        </div>
+        <h3>Unbeatable Prices</h3>
+        <p>We've optimized every process to deliver premium websites at 40-60% lower costs than competitors without compromising quality.</p>
+      </div>
+      
+      <div class="special-card">
+        <div class="special-icon">
+          <i class="fas fa-bolt"></i>
+        </div>
+        <h3>Lightning Fast Delivery</h3>
+        <p>Our efficient workflows mean most websites are delivered in 7-10 days, getting you online faster than industry standards.</p>
+      </div>
+      
+      <div class="special-card">
+        <div class="special-icon">
+          <i class="fas fa-crown"></i>
+        </div>
+        <h3>Premium Quality</h3>
+        <p>Every project undergoes rigorous quality checks to ensure pixel-perfect designs and flawless functionality.</p>
+      </div>
+      
+      <div class="special-card">
+        <div class="special-icon">
+          <i class="fas fa-headset"></i>
+        </div>
+        <h3>Dedicated Support</h3>
+        <p>24/7 customer support with average response times under 30 minutes - day or night.</p>
+      </div>
+      
+      <div class="special-card">
+        <div class="special-icon">
+          <i class="fas fa-mobile-alt"></i>
+        </div>
+        <h3>Mobile-First Design</h3>
+        <p>All our websites are built mobile-first, ensuring perfect performance on any device.</p>
+      </div>
+      
+      <div class="special-card">
+        <div class="special-icon">
+          <i class="fas fa-shield-alt"></i>
+        </div>
+        <h3>Future-Proof Security</h3>
+        <p>Enterprise-grade security measures built into every project at no extra cost.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="achievements-section">
+    <div class="section-title">
+      <h2>Our Impact</h2>
+      <p>Numbers that showcase our journey and capabilities</p>
+    </div>
+    
+    <div class="achievements-grid">
+      <div class="achievement-item">
+        <div class="achievement-number">500+</div>
+        <div class="achievement-label">Websites Delivered</div>
+      </div>
+      <div class="achievement-item">
+        <div class="achievement-number">98%</div>
+        <div class="achievement-label">Client Satisfaction</div>
+      </div>
+      <div class="achievement-item">
+        <div class="achievement-number">40%</div>
+        <div class="achievement-label">Cost Savings</div>
+      </div>
+      <div class="achievement-item">
+        <div class="achievement-number">10 Days</div>
+        <div class="achievement-label">Average Delivery</div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-container">
+      <div class="footer-about">
+        <div class="footer-logo"><span>&lt;/&gt;</span> WeebStudio</div>
+        <p>Professional web development and digital solutions for businesses of all sizes.</p>
+        <div class="social-links">
+          <a href="#"><i class="fab fa-twitter"></i></a>
+          <a href="#"><i class="fab fa-linkedin"></i></a>
+          <a href="#"><i class="fab fa-github"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+        </div>
+      </div>
+      <div class="footer-links">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="services.html">Services</a></li>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-links">
+        <h4>Services</h4>
+        <ul>
+          <li><a href="#">Web Development</a></li>
+          <li><a href="#">AI Solutions</a></li>
+          <li><a href="#">UI/UX Design</a></li>
+          <li><a href="#">SEO Optimization</a></li>
+        </ul>
+      </div>
+      <div class="footer-links">
+        <h4>Legal</h4>
+        <ul>
+          <li><a href="#">Privacy Policy</a></li>
+          <li><a href="#">Terms of Service</a></li>
+          <li><a href="#">Cookie Policy</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="copyright">
+      © 2023 WeebStudio. All rights reserved.
+    </div>
+  </footer>
+</body>
+</html>

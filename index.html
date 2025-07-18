@@ -1,0 +1,863 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title></> WeebStudio | Professional Web Development</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #2563eb;
+      --primary-dark: #1d4ed8;
+      --primary-light: #3b82f6;
+      --secondary: #7c3aed;
+      --accent: #10b981;
+      --text: #1f2937;
+      --text-light: #6b7280;
+      --light-bg: #f9fafb;
+      --white: #ffffff;
+      --border: #e5e7eb;
+      --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.1);
+      --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
+      --shadow-lg: 0 10px 25px rgba(0, 0, 0, 0.1);
+      --radius-sm: 4px;
+      --radius-md: 8px;
+      --radius-lg: 12px;
+    }
+    
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    
+    body {
+      font-family: 'Inter', sans-serif;
+      color: var(--text);
+      background-color: var(--light-bg);
+      line-height: 1.6;
+    }
+    
+    /* Header Styles */
+    header {
+      background-color: var(--white);
+      box-shadow: var(--shadow-sm);
+      position: fixed;
+      width: 100%;
+      top: 0;
+      z-index: 1000;
+    }
+    
+    .header-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    
+    .logo {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 1.5rem;
+      font-weight: 500;
+      color: var(--primary);
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    
+    .logo span {
+      color: var(--secondary);
+    }
+    
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+    }
+    
+    .nav-links a {
+      color: var(--text);
+      text-decoration: none;
+      font-weight: 500;
+      transition: all 0.2s;
+      position: relative;
+    }
+    
+    .nav-links a:hover {
+      color: var(--primary);
+    }
+    
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: var(--primary);
+      transition: width 0.3s;
+    }
+    
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+    
+    /* Hero Section */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 8rem 2rem 4rem;
+      background: linear-gradient(135deg, rgba(37, 99, 235, 0.05) 0%, rgba(124, 58, 237, 0.05) 100%);
+    }
+    
+    .hero-content {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    
+    .hero h1 {
+      font-size: 3rem;
+      margin-bottom: 1.5rem;
+      font-weight: 700;
+      color: var(--text);
+      line-height: 1.2;
+    }
+    
+    .hero p {
+      font-size: 1.25rem;
+      color: var(--text-light);
+      margin-bottom: 2.5rem;
+    }
+    
+    .cta-buttons {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      margin-bottom: 3rem;
+    }
+    
+    .btn {
+      padding: 0.75rem 1.5rem;
+      border-radius: var(--radius-sm);
+      font-weight: 600;
+      font-size: 1rem;
+      transition: all 0.2s;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    
+    .btn-primary {
+      background-color: var(--primary);
+      color: var(--white);
+      border: 1px solid var(--primary);
+    }
+    
+    .btn-primary:hover {
+      background-color: var(--primary-dark);
+      border-color: var(--primary-dark);
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-md);
+    }
+    
+    .btn-secondary {
+      background-color: var(--white);
+      color: var(--primary);
+      border: 1px solid var(--primary);
+    }
+    
+    .btn-secondary:hover {
+      background-color: rgba(37, 99, 235, 0.05);
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-md);
+    }
+    
+    /* AI Generator Section */
+    .section {
+      padding: 5rem 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    
+    .section-title {
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+    
+    .section-title h2 {
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 1rem;
+    }
+    
+    .section-title p {
+      color: var(--text-light);
+      max-width: 600px;
+      margin: 0 auto;
+    }
+    
+    .ai-generator {
+      background-color: var(--white);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-lg);
+      overflow: hidden;
+    }
+    
+    .generator-header {
+      padding: 2rem;
+      border-bottom: 1px solid var(--border);
+      text-align: center;
+    }
+    
+    .generator-header h3 {
+      font-size: 1.5rem;
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 0.5rem;
+    }
+    
+    .generator-header p {
+      color: var(--text-light);
+    }
+    
+    .generator-options {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      gap: 1.5rem;
+      padding: 2rem;
+    }
+    
+    .option-card {
+      background-color: var(--white);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      padding: 1.5rem;
+      cursor: pointer;
+      transition: all 0.3s;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    
+    .option-card:hover {
+      border-color: var(--primary-light);
+      box-shadow: var(--shadow-md);
+      transform: translateY(-5px);
+    }
+    
+    .option-card i {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+      color: var(--primary);
+      background-color: rgba(37, 99, 235, 0.1);
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    .option-card h4 {
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 0.5rem;
+    }
+    
+    .option-card p {
+      font-size: 0.9rem;
+      color: var(--text-light);
+    }
+    
+    /* Modal Styles */
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.5);
+      backdrop-filter: blur(5px);
+      z-index: 2000;
+      justify-content: center;
+      align-items: center;
+      padding: 1rem;
+    }
+    
+    .modal-content {
+      width: 100%;
+      max-width: 600px;
+      background: var(--white);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-lg);
+      position: relative;
+      animation: modalFadeIn 0.3s ease-out;
+      overflow: hidden;
+    }
+    
+    @keyframes modalFadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(-20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    .close-modal {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      color: var(--text-light);
+      font-size: 1.5rem;
+      cursor: pointer;
+      transition: all 0.2s;
+      z-index: 10;
+      background: none;
+      border: none;
+    }
+    
+    .close-modal:hover {
+      color: var(--text);
+    }
+    
+    /* Form Styles */
+    .form-container {
+      padding: 2rem;
+    }
+    
+    .form-title {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+    
+    .form-title h3 {
+      font-size: 1.5rem;
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 0.5rem;
+    }
+    
+    .form-title p {
+      color: var(--text-light);
+    }
+    
+    .form-group {
+      margin-bottom: 1.5rem;
+    }
+    
+    .form-group label {
+      display: block;
+      font-size: 0.875rem;
+      font-weight: 500;
+      color: var(--text);
+      margin-bottom: 0.5rem;
+    }
+    
+    .form-group input,
+    .form-group textarea,
+    .form-group select {
+      width: 100%;
+      padding: 0.75rem 1rem;
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      font-family: 'Inter', sans-serif;
+      font-size: 1rem;
+      color: var(--text);
+      transition: all 0.2s;
+    }
+    
+    .form-group input:focus,
+    .form-group textarea:focus,
+    .form-group select:focus {
+      outline: none;
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2);
+    }
+    
+    .form-group textarea {
+      resize: vertical;
+      min-height: 120px;
+    }
+    
+    .form-submit {
+      width: 100%;
+      padding: 0.875rem;
+      background-color: var(--primary);
+      color: var(--white);
+      border: none;
+      border-radius: var(--radius-sm);
+      font-family: 'Inter', sans-serif;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+    }
+    
+    .form-submit:hover {
+      background-color: var(--primary-dark);
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-md);
+    }
+    
+    /* Terminal Styles */
+    .terminal {
+      display: none;
+      background-color: #1e293b;
+      color: #e2e8f0;
+      font-family: 'JetBrains Mono', monospace;
+      padding: 1.5rem;
+      border-radius: var(--radius-md);
+      min-height: 200px;
+      max-height: 300px;
+      overflow-y: auto;
+      white-space: pre-line;
+      margin-top: 1.5rem;
+      position: relative;
+      line-height: 1.5;
+      font-size: 0.9rem;
+    }
+    
+    .terminal-header {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      padding: 0.5rem 1rem;
+      background-color: #0f172a;
+      color: #94a3b8;
+      font-size: 0.75rem;
+      border-bottom: 1px solid #334155;
+      display: flex;
+      justify-content: space-between;
+    }
+    
+    .terminal-content {
+      margin-top: 2rem;
+    }
+    
+    .typing::after {
+      content: '_';
+      animation: blink 0.7s infinite;
+      color: #e2e8f0;
+      font-weight: bold;
+    }
+    
+    @keyframes blink {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0; }
+    }
+    
+    .status {
+      margin-top: 1rem;
+      font-size: 0.875rem;
+      color: var(--text-light);
+      text-align: center;
+    }
+    
+    /* Footer */
+    footer {
+      background-color: var(--white);
+      padding: 4rem 2rem 2rem;
+      border-top: 1px solid var(--border);
+    }
+    
+    .footer-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 2rem;
+    }
+    
+    .footer-logo {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 1.25rem;
+      font-weight: 500;
+      color: var(--primary);
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    
+    .footer-about p {
+      color: var(--text-light);
+      margin-bottom: 1.5rem;
+    }
+    
+    .footer-links h4 {
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 1rem;
+    }
+    
+    .footer-links ul {
+      list-style: none;
+    }
+    
+    .footer-links li {
+      margin-bottom: 0.5rem;
+    }
+    
+    .footer-links a {
+      color: var(--text-light);
+      text-decoration: none;
+      transition: all 0.2s;
+    }
+    
+    .footer-links a:hover {
+      color: var(--primary);
+    }
+    
+    .social-links {
+      display: flex;
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+    
+    .social-links a {
+      color: var(--text-light);
+      font-size: 1.25rem;
+      transition: all 0.2s;
+    }
+    
+    .social-links a:hover {
+      color: var(--primary);
+    }
+    
+    .copyright {
+      text-align: center;
+      margin-top: 3rem;
+      padding-top: 2rem;
+      border-top: 1px solid var(--border);
+      color: var(--text-light);
+      font-size: 0.875rem;
+    }
+    
+    /* Responsive Styles */
+    @media (max-width: 768px) {
+      .hero h1 {
+        font-size: 2.25rem;
+      }
+      
+      .hero p {
+        font-size: 1.1rem;
+      }
+      
+      .nav-links {
+        gap: 1.5rem;
+      }
+      
+      .generator-options {
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      }
+    }
+    
+    @media (max-width: 640px) {
+      .header-container {
+        padding: 1rem;
+      }
+      
+      .hero {
+        padding: 6rem 1.5rem 3rem;
+      }
+      
+      .hero h1 {
+        font-size: 2rem;
+      }
+      
+      .hero p {
+        font-size: 1rem;
+      }
+      
+      .cta-buttons {
+        flex-direction: column;
+        width: 100%;
+      }
+      
+      .btn {
+        width: 100%;
+      }
+      
+      .nav-links {
+        display: none;
+      }
+      
+      .section {
+        padding: 3rem 1.5rem;
+      }
+      
+      .footer-container {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="header-container">
+      <a href="index.html" class="logo"><span>&lt;/&gt;</span> WeebStudio</a>
+      <nav class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="services.html">Services</a>
+        <a href="about.html">About Us</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="hero-content">
+      <h1>Transform Your Digital Presence</h1>
+      <p>Professional web development solutions tailored to your business needs with our AI-powered platform.</p>
+      <div class="cta-buttons">
+        <a href="#generator" class="btn btn-primary">
+          <i class="fas fa-bolt"></i> Generate Your Site
+        </a>
+        <a href="services.html" class="btn btn-secondary">
+          <i class="fas fa-code"></i> Our Services
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section id="generator" class="section">
+    <div class="section-title">
+      <h2>AI Website Generator</h2>
+      <p>Create a professional website in minutes by selecting your business type</p>
+    </div>
+    
+    <div class="ai-generator">
+      <div class="generator-header">
+        <h3>Select Your Website Type</h3>
+        <p>Choose the category that best fits your business</p>
+      </div>
+      <div class="generator-options">
+        <div class="option-card" data-type="business">
+          <i class="fas fa-briefcase"></i>
+          <h4>Business</h4>
+          <p>Professional websites for businesses</p>
+        </div>
+        <div class="option-card" data-type="portfolio">
+          <i class="fas fa-user-tie"></i>
+          <h4>Portfolio</h4>
+          <p>Showcase your work and skills</p>
+        </div>
+        <div class="option-card" data-type="ecommerce">
+          <i class="fas fa-shopping-cart"></i>
+          <h4>E-commerce</h4>
+          <p>Online stores with payments</p>
+        </div>
+        <div class="option-card" data-type="blog">
+          <i class="fas fa-blog"></i>
+          <h4>Blog</h4>
+          <p>Content-focused websites</p>
+        </div>
+        <div class="option-card" data-type="restaurant">
+          <i class="fas fa-utensils"></i>
+          <h4>Restaurant</h4>
+          <p>Menus and online ordering</p>
+        </div>
+        <div class="option-card" data-type="custom">
+          <i class="fas fa-cogs"></i>
+          <h4>Custom</h4>
+          <p>Tailored solutions</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Modal with Form -->
+  <div class="modal" id="generatorModal">
+    <div class="modal-content">
+      <button class="close-modal">&times;</button>
+      <div class="form-container">
+        <div class="form-title">
+          <h3>Website Generator</h3>
+          <p>Provide some details to generate your custom website</p>
+        </div>
+        <form id="enquiryForm">
+          <div class="form-group">
+            <label for="name">Your Name</label>
+            <input type="text" id="name" name="name" placeholder="John Doe" required />
+          </div>
+          <div class="form-group">
+            <label for="phone">Contact Information</label>
+            <input type="text" id="phone" name="phone" placeholder="Email or phone number" required />
+          </div>
+          <div class="form-group">
+            <label for="enquiry">Business Details</label>
+            <textarea id="enquiry" name="enquiry" placeholder="Describe your business (e.g. 'Cafe, Bakery, Restaurant' or 'Gym, Yoga Studio')" required></textarea>
+          </div>
+          <button type="submit" class="form-submit">
+            <i class="fas fa-magic"></i> Generate Website
+          </button>
+          <div id="statusMsg" class="status"></div>
+        </form>
+
+        <div id="terminal" class="terminal">
+          <div class="terminal-header">AI_TERMINAL [v2.4.1]</div>
+          <div class="terminal-content"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <div class="footer-container">
+      <div class="footer-about">
+        <div class="footer-logo"><span>&lt;/&gt;</span> WeebStudio</div>
+        <p>Professional web development and AI-powered solutions for businesses of all sizes.</p>
+        <div class="social-links">
+          <a href="#"><i class="fab fa-twitter"></i></a>
+          <a href="#"><i class="fab fa-linkedin"></i></a>
+          <a href="#"><i class="fab fa-github"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+        </div>
+      </div>
+      <div class="footer-links">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="services.html">Services</a></li>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-links">
+        <h4>Services</h4>
+        <ul>
+          <li><a href="#">Web Development</a></li>
+          <li><a href="#">AI Solutions</a></li>
+          <li><a href="#">UI/UX Design</a></li>
+          <li><a href="#">SEO Optimization</a></li>
+        </ul>
+      </div>
+      <div class="footer-links">
+        <h4>Legal</h4>
+        <ul>
+          <li><a href="#">Privacy Policy</a></li>
+          <li><a href="#">Terms of Service</a></li>
+          <li><a href="#">Cookie Policy</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="copyright">
+      © 2023 WeebStudio. All rights reserved.
+    </div>
+  </footer>
+
+  <script>
+    // Modal and Form Handling
+    const modal = document.getElementById("generatorModal");
+    const optionCards = document.querySelectorAll(".option-card");
+    const closeModal = document.querySelector(".close-modal");
+    const form = document.getElementById("enquiryForm");
+    const statusMsg = document.getElementById("statusMsg");
+    const terminal = document.getElementById("terminal");
+    const terminalContent = document.querySelector(".terminal-content");
+    const placeholder = "BUSINESS_TYPES_PLACEHOLDER";
+
+    const fakeCodeLines = [
+      "Initializing website generator v2.4.1",
+      "Loading templates and assets...",
+      "Analyzing business requirements...",
+      `Detected business type: ${placeholder}`,
+      "Generating optimal UI/UX (25%)",
+      "Selecting color palette (50%)",
+      "Building responsive layouts (75%)",
+      "Optimizing SEO parameters (90%)",
+      "Compiling assets (100%)",
+      "Website generation complete"
+    ];
+
+    // Open modal when option card is clicked
+    optionCards.forEach(card => {
+      card.addEventListener("click", () => {
+        modal.style.display = "flex";
+        document.body.style.overflow = "hidden";
+      });
+    });
+
+    // Close modal
+    closeModal.addEventListener("click", () => {
+      modal.style.display = "none";
+      document.body.style.overflow = "auto";
+    });
+
+    // Close modal when clicking outside
+    window.addEventListener("click", (e) => {
+      if (e.target === modal) {
+        modal.style.display = "none";
+        document.body.style.overflow = "auto";
+      }
+    });
+
+    // Terminal typing animation
+    function typeLines(lines, i = 0) {
+      if (i >= lines.length) {
+        terminalContent.innerHTML += `<br><br><span style="color: #10b981; font-weight: 500;">Website generated successfully!</span>`;
+        terminalContent.innerHTML += `<br><span style="color: #7c3aed;">We'll contact you shortly with your website preview.</span>`;
+        return;
+      }
+      
+      let line = lines[i];
+      if (i === 3) {
+        const textarea = document.querySelector('textarea');
+        line = line.replace(placeholder, `"${textarea.value}"`);
+      }
+      
+      terminalContent.innerHTML += `<span style="color: #e2e8f0;">${line}</span><br>`;
+      terminal.scrollTop = terminal.scrollHeight;
+      setTimeout(() => typeLines(lines, i + 1), Math.random() * 200 + 300);
+    }
+
+    // Form submission
+    form.addEventListener("submit", function(e) {
+      e.preventDefault();
+      statusMsg.textContent = "";
+      form.style.display = "none";
+      terminal.style.display = "block";
+      terminalContent.innerHTML = `<span style="color: #94a3b8;">Starting website generation: <span class="typing"></span></span>`;
+
+      setTimeout(() => {
+        terminalContent.innerHTML = "";
+        typeLines(fakeCodeLines);
+      }, 1500);
+
+      // Send the form data (no need to wait for response to animate)
+      const formData = new FormData(form);
+      fetch("https://script.google.com/macros/s/AKfycbwgQycJEjcgTOaoVyDP-tcTOu-dcW2ueZxh9nnbrpKuYDmFCScLy_WXy2jc1tsdq_5t/exec", {
+        method: "POST",
+        body: formData
+      }).catch(error => {
+        console.error("Error:", error);
+        statusMsg.textContent = "There was an error submitting your request. Please try again.";
+        statusMsg.style.color = "#ef4444";
+      });
+    });
+  </script>
+</body>
+</html>

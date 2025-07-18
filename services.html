@@ -1,0 +1,1346 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title></> WeebStudio | Our Services</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #4361ee;
+      --primary-dark: #3a0ca3;
+      --primary-light: #4895ef;
+      --secondary: #7209b7;
+      --accent: #4cc9f0;
+      --text: #1a1a2e;
+      --text-light: #6c757d;
+      --light-bg: #f8f9fa;
+      --white: #ffffff;
+      --border: #e9ecef;
+      --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.1);
+      --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
+      --shadow-lg: 0 10px 25px rgba(0, 0, 0, 0.1);
+      --radius-sm: 6px;
+      --radius-md: 12px;
+      --radius-lg: 18px;
+    }
+    
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    
+    body {
+      font-family: 'Inter', sans-serif;
+      color: var(--text);
+      background-color: var(--light-bg);
+      line-height: 1.6;
+    }
+    
+    /* Header Styles */
+    header {
+      background-color: var(--white);
+      box-shadow: var(--shadow-sm);
+      position: fixed;
+      width: 100%;
+      top: 0;
+      z-index: 1000;
+    }
+    
+    .header-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    
+    .logo {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 1.5rem;
+      font-weight: 500;
+      color: var(--primary);
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    
+    .logo span {
+      color: var(--secondary);
+    }
+    
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+    }
+    
+    .nav-links a {
+      color: var(--text);
+      text-decoration: none;
+      font-weight: 500;
+      transition: all 0.2s;
+      position: relative;
+    }
+    
+    .nav-links a:hover {
+      color: var(--primary);
+    }
+    
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: var(--primary);
+      transition: width 0.3s;
+    }
+    
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+    
+    /* Hero Section */
+    .page-hero {
+      min-height: 300px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 8rem 2rem 4rem;
+      background: linear-gradient(135deg, rgba(67, 97, 238, 0.05) 0%, rgba(114, 9, 183, 0.05) 100%);
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .page-hero::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle, rgba(76, 201, 240, 0.05) 0%, transparent 70%);
+      animation: float 15s infinite linear;
+      z-index: -1;
+    }
+    
+    @keyframes float {
+      0% { transform: translate(0, 0) rotate(0deg); }
+      50% { transform: translate(-25%, -25%) rotate(180deg); }
+      100% { transform: translate(0, 0) rotate(360deg); }
+    }
+    
+    .page-hero h1 {
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 1rem;
+      line-height: 1.2;
+      animation: fadeInUp 0.8s ease-out;
+    }
+    
+    .page-hero p {
+      font-size: 1.1rem;
+      color: var(--text-light);
+      max-width: 700px;
+      margin: 0 auto;
+      animation: fadeInUp 0.8s ease-out 0.2s;
+      animation-fill-mode: both;
+    }
+    
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    /* Services Grid */
+    .services-section {
+      padding: 4rem 2rem;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+    
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+    
+    .service-card {
+      background-color: var(--white);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-md);
+      overflow: hidden;
+      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      cursor: pointer;
+      position: relative;
+      transform-style: preserve-3d;
+      perspective: 1000px;
+      border: 1px solid rgba(67, 97, 238, 0.1);
+    }
+    
+    .service-card:hover {
+      transform: translateY(-10px) scale(1.02);
+      box-shadow: 0 15px 30px rgba(67, 97, 238, 0.15);
+    }
+    
+    .service-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, var(--primary), var(--secondary));
+      transform-origin: left;
+      transform: scaleX(0);
+      transition: transform 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+    }
+    
+    .service-card:hover::before {
+      transform: scaleX(1);
+    }
+    
+    .service-image {
+      height: 180px;
+      background-size: cover;
+      background-position: center;
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    .service-image::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(135deg, rgba(67, 97, 238, 0.2), rgba(114, 9, 183, 0.2));
+    }
+    
+    .service-icon {
+      font-size: 3.5rem;
+      color: var(--white);
+      z-index: 2;
+      text-shadow: 0 4px 15px rgba(0,0,0,0.3);
+      transition: all 0.4s ease;
+      filter: drop-shadow(0 4px 8px rgba(0,0,0,0.2));
+    }
+    
+    .service-card:hover .service-icon {
+      transform: scale(1.1) translateY(-10px);
+      filter: drop-shadow(0 6px 12px rgba(0,0,0,0.3));
+    }
+    
+    .service-content {
+      padding: 1.5rem;
+      position: relative;
+    }
+    
+    .service-content h3 {
+      font-size: 1.3rem;
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 0.75rem;
+      transition: color 0.3s;
+    }
+    
+    .service-card:hover .service-content h3 {
+      color: var(--primary);
+    }
+    
+    .service-content p {
+      color: var(--text-light);
+      font-size: 0.95rem;
+      margin-bottom: 1rem;
+    }
+    
+    .service-meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.85rem;
+      color: var(--text-light);
+    }
+    
+    .service-cta {
+      color: var(--primary);
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      transition: all 0.3s;
+    }
+    
+    .service-card:hover .service-cta {
+      color: var(--secondary);
+      transform: translateX(5px);
+    }
+    
+    /* Floating bubbles animation */
+    .floating-bubbles {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      overflow: hidden;
+      z-index: -1;
+    }
+    
+    .bubble {
+      position: absolute;
+      bottom: -100px;
+      background: rgba(67, 97, 238, 0.1);
+      border-radius: 50%;
+      animation: floating 15s infinite ease-in;
+    }
+    
+    .bubble:nth-child(1) {
+      width: 40px;
+      height: 40px;
+      left: 10%;
+      animation-duration: 16s;
+    }
+    
+    .bubble:nth-child(2) {
+      width: 20px;
+      height: 20px;
+      left: 20%;
+      animation-duration: 10s;
+      animation-delay: 1s;
+    }
+    
+    .bubble:nth-child(3) {
+      width: 50px;
+      height: 50px;
+      left: 35%;
+      animation-duration: 17s;
+      animation-delay: 2s;
+    }
+    
+    .bubble:nth-child(4) {
+      width: 30px;
+      height: 30px;
+      left: 50%;
+      animation-duration: 12s;
+      animation-delay: 0.5s;
+    }
+    
+    .bubble:nth-child(5) {
+      width: 25px;
+      height: 25px;
+      left: 70%;
+      animation-duration: 14s;
+      animation-delay: 3s;
+    }
+    
+    .bubble:nth-child(6) {
+      width: 40px;
+      height: 40px;
+      left: 85%;
+      animation-duration: 15s;
+      animation-delay: 1.5s;
+    }
+    
+    @keyframes floating {
+      0% {
+        bottom: -100px;
+        transform: translateX(0);
+      }
+      50% {
+        transform: translateX(100px);
+      }
+      100% {
+        bottom: 100%;
+        transform: translateX(-50px);
+      }
+    }
+    
+    /* Modal Styles */
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.5);
+      backdrop-filter: blur(5px);
+      z-index: 2000;
+      justify-content: center;
+      align-items: center;
+      padding: 1rem;
+      animation: fadeIn 0.3s ease-out;
+    }
+    
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+    
+    .modal-content {
+      width: 100%;
+      max-width: 600px;
+      background: var(--white);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-lg);
+      position: relative;
+      animation: slideUp 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      overflow: hidden;
+    }
+    
+    @keyframes slideUp {
+      from {
+        opacity: 0;
+        transform: translateY(50px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    .close-modal {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      color: var(--text-light);
+      font-size: 1.5rem;
+      cursor: pointer;
+      transition: all 0.2s;
+      z-index: 10;
+      background: none;
+      border: none;
+      width: 40px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+    }
+    
+    .close-modal:hover {
+      color: var(--primary);
+      background: rgba(67, 97, 238, 0.1);
+      transform: rotate(90deg);
+    }
+    
+    /* Form Styles */
+    .form-container {
+      padding: 2rem;
+    }
+    
+    .form-title {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+    
+    .form-title h3 {
+      font-size: 1.5rem;
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 0.5rem;
+    }
+    
+    .form-title p {
+      color: var(--text-light);
+    }
+    
+    .form-group {
+      margin-bottom: 1.5rem;
+      position: relative;
+    }
+    
+    .form-group label {
+      display: block;
+      font-size: 0.875rem;
+      font-weight: 500;
+      color: var(--text);
+      margin-bottom: 0.5rem;
+    }
+    
+    .form-group input,
+    .form-group textarea,
+    .form-group select {
+      width: 100%;
+      padding: 0.75rem 1rem;
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      font-family: 'Inter', sans-serif;
+      font-size: 1rem;
+      color: var(--text);
+      transition: all 0.2s;
+    }
+    
+    .form-group input:focus,
+    .form-group textarea:focus,
+    .form-group select:focus {
+      outline: none;
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(67, 97, 238, 0.2);
+    }
+    
+    .form-group textarea {
+      resize: vertical;
+      min-height: 120px;
+    }
+    
+    .form-submit {
+      width: 100%;
+      padding: 0.875rem;
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      color: var(--white);
+      border: none;
+      border-radius: var(--radius-sm);
+      font-family: 'Inter', sans-serif;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .form-submit:hover {
+      background: linear-gradient(135deg, var(--primary-dark), var(--secondary));
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(67, 97, 238, 0.3);
+    }
+    
+    .form-submit::after {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: linear-gradient(
+        transparent,
+        rgba(255, 255, 255, 0.2),
+        transparent
+      );
+      transform: rotate(30deg);
+      animation: shine 3s infinite;
+    }
+    
+    @keyframes shine {
+      0% { left: -50%; }
+      20%, 100% { left: 150%; }
+    }
+    
+    /* Terminal Styles */
+    .terminal {
+      display: none;
+      background-color: #1a1a2e;
+      color: #e2e8f0;
+      font-family: 'JetBrains Mono', monospace;
+      padding: 1.5rem;
+      border-radius: var(--radius-md);
+      min-height: 200px;
+      max-height: 300px;
+      overflow-y: auto;
+      margin-top: 1.5rem;
+      position: relative;
+      line-height: 1.5;
+      font-size: 0.9rem;
+      box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.3);
+    }
+    
+    .terminal-header {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      padding: 0.5rem 1rem;
+      background-color: #16213e;
+      color: #4cc9f0;
+      font-size: 0.75rem;
+      border-bottom: 1px solid #0f3460;
+      display: flex;
+      justify-content: space-between;
+    }
+    
+    .terminal-content {
+      margin-top: 2rem;
+    }
+    
+    .typing::after {
+      content: '_';
+      animation: blink 0.7s infinite;
+      color: #4cc9f0;
+      font-weight: bold;
+    }
+    
+    @keyframes blink {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0; }
+    }
+    
+    .status {
+      margin-top: 1rem;
+      font-size: 0.875rem;
+      color: var(--text-light);
+      text-align: center;
+    }
+    
+    /* Footer */
+    footer {
+      background-color: var(--white);
+      padding: 4rem 2rem 2rem;
+      border-top: 1px solid var(--border);
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .footer-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 2rem;
+    }
+    
+    .footer-logo {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 1.25rem;
+      font-weight: 500;
+      color: var(--primary);
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    
+    .footer-about p {
+      color: var(--text-light);
+      margin-bottom: 1.5rem;
+    }
+    
+    .footer-links h4 {
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 1rem;
+    }
+    
+    .footer-links ul {
+      list-style: none;
+    }
+    
+    .footer-links li {
+      margin-bottom: 0.5rem;
+    }
+    
+    .footer-links a {
+      color: var(--text-light);
+      text-decoration: none;
+      transition: all 0.2s;
+    }
+    
+    .footer-links a:hover {
+      color: var(--primary);
+    }
+    
+    .social-links {
+      display: flex;
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+    
+    .social-links a {
+      color: var(--text-light);
+      font-size: 1.25rem;
+      transition: all 0.2s;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    .social-links a:hover {
+      color: var(--white);
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      transform: translateY(-3px);
+    }
+    
+    .copyright {
+      text-align: center;
+      margin-top: 3rem;
+      padding-top: 2rem;
+      border-top: 1px solid var(--border);
+      color: var(--text-light);
+      font-size: 0.875rem;
+    }
+    
+    /* Responsive Styles */
+    @media (max-width: 1024px) {
+      .services-grid {
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      }
+    }
+    
+    @media (max-width: 768px) {
+      .page-hero h1 {
+        font-size: 2rem;
+      }
+      
+      .nav-links {
+        gap: 1.5rem;
+      }
+    }
+    
+    @media (max-width: 640px) {
+      .header-container {
+        padding: 1rem;
+      }
+      
+      .page-hero {
+        padding: 6rem 1.5rem 3rem;
+      }
+      
+      .services-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .nav-links {
+        display: none;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="floating-bubbles">
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+  </div>
+
+  <header>
+    <div class="header-container">
+      <a href="index.html" class="logo"><span>&lt;/&gt;</span> WeebStudio</a>
+      <nav class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="services.html" class="active">Services</a>
+        <a href="about.html">About Us</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="page-hero">
+    <h1>Our Website Services</h1>
+    <p>Explore our specialized website solutions tailored for every industry and business need</p>
+  </section>
+
+  <section class="services-section">
+    <div class="services-grid">
+      <!-- Education -->
+      <div class="service-card" data-type="school">
+        <div class="service-image" style="background-image: url('https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80');">
+          <i class="fas fa-graduation-cap service-icon"></i>
+        </div>
+        <div class="service-content">
+          <h3>Education</h3>
+          <p>Complete solutions for schools, universities, and e-learning platforms.</p>
+          <div class="service-meta">
+            <span class="service-cta">Get Started <i class="fas fa-arrow-right"></i></span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Food Business -->
+      <div class="service-card" data-type="bakery">
+        <div class="service-image" style="background-image: url('https://images.unsplash.com/photo-1608198093002-ad4e005484ec?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80');">
+          <i class="fas fa-cookie-bite service-icon"></i>
+        </div>
+        <div class="service-content">
+          <h3>Food & Beverage</h3>
+          <p>Delicious online presence for bakeries, cafes, and restaurants.</p>
+          <div class="service-meta">
+            <span class="service-cta">Get Started <i class="fas fa-arrow-right"></i></span>
+          </div>
+        </div>
+      </div>
+
+      <!-- SEO -->
+      <div class="service-card" data-type="seo">
+        <div class="service-image" style="background-image: url('https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80');">
+          <i class="fas fa-search-plus service-icon"></i>
+        </div>
+        <div class="service-content">
+          <h3>SEO Optimization</h3>
+          <p>Boost your website's visibility and organic traffic.</p>
+          <div class="service-meta">
+            <span class="service-cta">Get Started <i class="fas fa-arrow-right"></i></span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Restaurant -->
+      <div class="service-card" data-type="restaurant">
+        <div class="service-image" style="background-image: url('https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80');">
+          <i class="fas fa-utensils service-icon"></i>
+        </div>
+        <div class="service-content">
+          <h3>Restaurants</h3>
+          <p>Online menus, reservation systems, and food delivery integration.</p>
+          <div class="service-meta">
+            <span class="service-cta">Get Started <i class="fas fa-arrow-right"></i></span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Medical -->
+      <div class="service-card" data-type="medical">
+        <div class="service-image" style="background-image: url('https://images.unsplash.com/photo-1576091160550-2173dba999ef?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80');">
+          <i class="fas fa-hospital-user service-icon"></i>
+        </div>
+        <div class="service-content">
+          <h3>Medical</h3>
+          <p>HIPAA-compliant websites for clinics and private practices.</p>
+          <div class="service-meta">
+            <span class="service-cta">Get Started <i class="fas fa-arrow-right"></i></span>
+          </div>
+        </div>
+      </div>
+
+      <!-- E-commerce -->
+      <div class="service-card" data-type="ecommerce">
+        <div class="service-image" style="background-image: url('https://images.unsplash.com/photo-1555529669-e69e7aa0ba9a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80');">
+          <i class="fas fa-shopping-bag service-icon"></i>
+        </div>
+        <div class="service-content">
+          <h3>E-commerce</h3>
+          <p>Full-featured online stores with payment gateways.</p>
+          <div class="service-meta">
+            <span class="service-cta">Get Started <i class="fas fa-arrow-right"></i></span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Portfolio -->
+      <div class="service-card" data-type="portfolio">
+        <div class="service-image" style="background-image: url('https://images.unsplash.com/photo-1498050108023-c5249f4df085?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80');">
+          <i class="fas fa-user-tie service-icon"></i>
+        </div>
+        <div class="service-content">
+          <h3>Portfolio</h3>
+          <p>Showcase your work with elegant designs for creatives.</p>
+          <div class="service-meta">
+            <span class="service-cta">Get Started <i class="fas fa-arrow-right"></i></span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Real Estate -->
+      <div class="service-card" data-type="realestate">
+        <div class="service-image" style="background-image: url('https://images.unsplash.com/photo-1560518883-ce09059eeffa?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80');">
+          <i class="fas fa-home service-icon"></i>
+        </div>
+        <div class="service-content">
+          <h3>Real Estate</h3>
+          <p>Property listings with search filters and virtual tours.</p>
+          <div class="service-meta">
+            <span class="service-cta">Get Started <i class="fas fa-arrow-right"></i></span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Hotel -->
+      <div class="service-card" data-type="hotel">
+        <div class="service-image" style="background-image: url('https://images.unsplash.com/photo-1566073771259-6a8506099945?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80');">
+          <i class="fas fa-concierge-bell service-icon"></i>
+        </div>
+        <div class="service-content">
+          <h3>Hospitality</h3>
+          <p>Booking systems and amenities showcase for hotels.</p>
+          <div class="service-meta">
+            <span class="service-cta">Get Started <i class="fas fa-arrow-right"></i></span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Fitness -->
+      <div class="service-card" data-type="fitness">
+        <div class="service-image" style="background-image: url('https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80');">
+          <i class="fas fa-running service-icon"></i>
+        </div>
+        <div class="service-content">
+          <h3>Fitness</h3>
+          <p>Class schedules and member portals for gyms and studios.</p>
+          <div class="service-meta">
+            <span class="service-cta">Get Started <i class="fas fa-arrow-right"></i></span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Wedding -->
+      <div class="service-card" data-type="wedding">
+        <div class="service-image" style="background-image: url('https://images.unsplash.com/photo-1519225421980-715cb0215aed?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80');">
+          <i class="fas fa-glass-cheers service-icon"></i>
+        </div>
+        <div class="service-content">
+          <h3>Wedding</h3>
+          <p>Elegant designs for wedding planners and venues.</p>
+          <div class="service-meta">
+            <span class="service-cta">Get Started <i class="fas fa-arrow-right"></i></span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Photography -->
+      <div class="service-card" data-type="photography">
+        <div class="service-image" style="background-image: url('https://images.unsplash.com/photo-1472214103451-9374bd1c798e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80');">
+          <i class="fas fa-camera-retro service-icon"></i>
+        </div>
+        <div class="service-content">
+          <h3>Photography</h3>
+          <p>Gallery-focused websites with portfolio displays.</p>
+          <div class="service-meta">
+            <span class="service-cta">Get Started <i class="fas fa-arrow-right"></i></span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Law Firm -->
+      <div class="service-card" data-type="law">
+        <div class="service-image" style="background-image: url('https://images.unsplash.com/photo-1589829545856-d10d557cf95f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80');">
+          <i class="fas fa-balance-scale service-icon"></i>
+        </div>
+        <div class="service-content">
+          <h3>Legal</h3>
+          <p>Professional websites for legal practices and firms.</p>
+          <div class="service-meta">
+            <span class="service-cta">Get Started <i class="fas fa-arrow-right"></i></span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Non-Profit -->
+      <div class="service-card" data-type="nonprofit">
+        <div class="service-image" style="background-image: url('https://images.unsplash.com/photo-1521791136064-7986c2920216?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80');">
+          <i class="fas fa-hands-helping service-icon"></i>
+        </div>
+        <div class="service-content">
+          <h3>Non-Profit</h3>
+          <p>Donation systems and volunteer signups for charities.</p>
+          <div class="service-meta">
+            <span class="service-cta">Get Started <i class="fas fa-arrow-right"></i></span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Automotive -->
+      <div class="service-card" data-type="automotive">
+        <div class="service-image" style="background-image: url('https://images.unsplash.com/photo-1494976388531-d1058494cdd8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80');">
+          <i class="fas fa-car-alt service-icon"></i>
+        </div>
+        <div class="service-content">
+          <h3>Automotive</h3>
+          <p>Inventory displays and service scheduling for dealerships.</p>
+          <div class="service-meta">
+            <span class="service-cta">Get Started <i class="fas fa-arrow-right"></i></span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Salon -->
+      <div class="service-card" data-type="salon">
+        <div class="service-image" style="background-image: url('https://images.unsplash.com/photo-1595476108010-b4d1f102b1b1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80');">
+          <i class="fas fa-spa service-icon"></i>
+        </div>
+        <div class="service-content">
+          <h3>Beauty</h3>
+          <p>Appointment booking and service menus for salons.</p>
+          <div class="service-meta">
+            <span class="service-cta">Get Started <i class="fas fa-arrow-right"></i></span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Blog -->
+      <div class="service-card" data-type="blog">
+        <div class="service-image" style="background-image: url('https://images.unsplash.com/photo-1546074177-ffdda98d214f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80');">
+          <i class="fas fa-pen-fancy service-icon"></i>
+        </div>
+        <div class="service-content">
+          <h3>Blogging</h3>
+          <p>Content management systems with SEO optimization.</p>
+          <div class="service-meta">
+            <span class="service-cta">Get Started <i class="fas fa-arrow-right"></i></span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Construction -->
+      <div class="service-card" data-type="construction">
+        <div class="service-image" style="background-image: url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80');">
+          <i class="fas fa-tools service-icon"></i>
+        </div>
+        <div class="service-content">
+          <h3>Construction</h3>
+          <p>Project galleries and service areas for contractors.</p>
+          <div class="service-meta">
+            <span class="service-cta">Get Started <i class="fas fa-arrow-right"></i></span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Pet Services -->
+      <div class="service-card" data-type="pets">
+        <div class="service-image" style="background-image: url('https://images.unsplash.com/photo-1586671267731-da2cf3ceeb80?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80');">
+          <i class="fas fa-paw service-icon"></i>
+        </div>
+        <div class="service-content">
+          <h3>Pet Services</h3>
+          <p>Grooming, boarding, and veterinary websites.</p>
+          <div class="service-meta">
+            <span class="service-cta">Get Started <i class="fas fa-arrow-right"></i></span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Travel -->
+      <div class="service-card" data-type="travel">
+        <div class="service-image" style="background-image: url('https://images.unsplash.com/photo-1503220317375-aaad61436b1b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80');">
+          <i class="fas fa-plane-departure service-icon"></i>
+        </div>
+        <div class="service-content">
+          <h3>Travel</h3>
+          <p>Tour packages and booking systems for agencies.</p>
+          <div class="service-meta">
+            <span class="service-cta">Get Started <i class="fas fa-arrow-right"></i></span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Music -->
+      <div class="service-card" data-type="music">
+        <div class="service-image" style="background-image: url('https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80');">
+          <i class="fas fa-music service-icon"></i>
+        </div>
+        <div class="service-content">
+          <h3>Music</h3>
+          <p>Audio players and tour dates for musicians.</p>
+          <div class="service-meta">
+            <span class="service-cta">Get Started <i class="fas fa-arrow-right"></i></span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Event Planning -->
+      <div class="service-card" data-type="events">
+        <div class="service-image" style="background-image: url('https://images.unsplash.com/photo-1511578314322-379afb476865?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80');">
+          <i class="fas fa-calendar-check service-icon"></i>
+        </div>
+        <div class="service-content">
+          <h3>Events</h3>
+          <p>Event calendars and ticket sales for organizers.</p>
+          <div class="service-meta">
+            <span class="service-cta">Get Started <i class="fas fa-arrow-right"></i></span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Consulting -->
+      <div class="service-card" data-type="consulting">
+        <div class="service-image" style="background-image: url('https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80');">
+          <i class="fas fa-chart-line service-icon"></i>
+        </div>
+        <div class="service-content">
+          <h3>Consulting</h3>
+          <p>Professional profiles and service offerings.</p>
+          <div class="service-meta">
+            <span class="service-cta">Get Started <i class="fas fa-arrow-right"></i></span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Technology -->
+      <div class="service-card" data-type="tech">
+        <div class="service-image" style="background-image: url('https://images.unsplash.com/photo-1518770660439-4636190af475?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80');">
+          <i class="fas fa-microchip service-icon"></i>
+        </div>
+        <div class="service-content">
+          <h3>Technology</h3>
+          <p>Product showcases and support systems.</p>
+          <div class="service-meta">
+            <span class="service-cta">Get Started <i class="fas fa-arrow-right"></i></span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Agriculture -->
+      <div class="service-card" data-type="agriculture">
+        <div class="service-image" style="background-image: url('https://images.unsplash.com/photo-1500382017468-9049fed747ef?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80');">
+          <i class="fas fa-tractor service-icon"></i>
+        </div>
+        <div class="service-content">
+          <h3>Agriculture</h3>
+          <p>Farm profiles and product catalogs.</p>
+          <div class="service-meta">
+            <span class="service-cta">Get Started <i class="fas fa-arrow-right"></i></span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Art Gallery -->
+      <div class="service-card" data-type="art">
+        <div class="service-image" style="background-image: url('https://images.unsplash.com/photo-1536922246289-88c42f957773?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80');">
+          <i class="fas fa-paint-brush service-icon"></i>
+        </div>
+        <div class="service-content">
+          <h3>Art</h3>
+          <p>Virtual exhibitions and artist profiles.</p>
+          <div class="service-meta">
+            <span class="service-cta">Get Started <i class="fas fa-arrow-right"></i></span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Religious -->
+      <div class="service-card" data-type="religious">
+        <div class="service-image" style="background-image: url('https://images.unsplash.com/photo-1588591795089-5d71a0eaa1fe?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80');">
+          <i class="fas fa-pray service-icon"></i>
+        </div>
+        <div class="service-content">
+          <h3>Religious</h3>
+          <p>Event calendars and community boards.</p>
+          <div class="service-meta">
+            <span class="service-cta">Get Started <i class="fas fa-arrow-right"></i></span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Sports -->
+      <div class="service-card" data-type="sports">
+        <div class="service-image" style="background-image: url('https://images.unsplash.com/photo-1540747913346-19e32dc3e97e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80');">
+          <i class="fas fa-football-ball service-icon"></i>
+        </div>
+        <div class="service-content">
+          <h3>Sports</h3>
+          <p>Team profiles and registration systems.</p>
+          <div class="service-meta">
+            <span class="service-cta">Get Started <i class="fas fa-arrow-right"></i></span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Custom Solution -->
+      <div class="service-card" data-type="custom">
+        <div class="service-image" style="background-image: url('https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80');">
+          <i class="fas fa-lightbulb service-icon"></i>
+        </div>
+        <div class="service-content">
+          <h3>Custom Solution</h3>
+          <p>Tailored websites for unique business needs.</p>
+          <div class="service-meta">
+            <span class="service-cta">Get Started <i class="fas fa-arrow-right"></i></span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Modal with Form -->
+  <div class="modal" id="generatorModal">
+    <div class="modal-content">
+      <button class="close-modal">&times;</button>
+      <div class="form-container">
+        <div class="form-title">
+          <h3>Website Request</h3>
+          <p>Provide some details to get started with your custom website</p>
+        </div>
+        <form id="enquiryForm">
+          <div class="form-group">
+            <label for="name">Your Name</label>
+            <input type="text" id="name" name="name" placeholder="John Doe" required />
+          </div>
+          <div class="form-group">
+            <label for="phone">Contact Information</label>
+            <input type="text" id="phone" name="phone" placeholder="Email or phone number" required />
+          </div>
+          <div class="form-group">
+            <label for="enquiry">Project Details</label>
+            <textarea id="enquiry" name="enquiry" placeholder="Tell us about your website needs (e.g. 'School website with student portal' or 'E-commerce store for handmade goods')" required></textarea>
+          </div>
+          <button type="submit" class="form-submit">
+            <i class="fas fa-paper-plane"></i> Submit Request
+          </button>
+          <div id="statusMsg" class="status"></div>
+        </form>
+
+        <div id="terminal" class="terminal">
+          <div class="terminal-header">WEBSITE_REQUEST [v2.4.1]</div>
+          <div class="terminal-content"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <div class="footer-container">
+      <div class="footer-about">
+        <div class="footer-logo"><span>&lt;/&gt;</span> WeebStudio</div>
+        <p>Professional web development and digital solutions for businesses of all sizes.</p>
+        <div class="social-links">
+          <a href="#"><i class="fab fa-twitter"></i></a>
+          <a href="#"><i class="fab fa-linkedin"></i></a>
+          <a href="#"><i class="fab fa-github"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+        </div>
+      </div>
+      <div class="footer-links">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="services.html" class="active">Services</a></li>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-links">
+        <h4>Services</h4>
+        <ul>
+          <li><a href="#">Web Development</a></li>
+          <li><a href="#">AI Solutions</a></li>
+          <li><a href="#">UI/UX Design</a></li>
+          <li><a href="#">SEO Optimization</a></li>
+        </ul>
+      </div>
+      <div class="footer-links">
+        <h4>Legal</h4>
+        <ul>
+          <li><a href="#">Privacy Policy</a></li>
+          <li><a href="#">Terms of Service</a></li>
+          <li><a href="#">Cookie Policy</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="copyright">
+      © 2023 WeebStudio. All rights reserved.
+    </div>
+  </footer>
+
+  <script>
+    // Modal and Form Handling
+    const modal = document.getElementById("generatorModal");
+    const serviceCards = document.querySelectorAll(".service-card");
+    const closeModal = document.querySelector(".close-modal");
+    const form = document.getElementById("enquiryForm");
+    const statusMsg = document.getElementById("statusMsg");
+    const terminal = document.getElementById("terminal");
+    const terminalContent = document.querySelector(".terminal-content");
+    const placeholder = "BUSINESS_TYPES_PLACEHOLDER";
+
+    const fakeCodeLines = [
+      "Initializing request processing v2.4.1",
+      "Connecting to project management system...",
+      "Analyzing project requirements...",
+      `Detected service category: ${placeholder}`,
+      "Reviewing specifications (25%)",
+      "Estimating project timeline (50%)",
+      "Preparing initial proposal (75%)",
+      "Finalizing details (90%)",
+      "Request processed successfully (100%)",
+      "Our team will contact you within 24 hours"
+    ];
+
+    // Open modal when service card is clicked
+    serviceCards.forEach(card => {
+      card.addEventListener("click", () => {
+        const serviceType = card.getAttribute("data-type");
+        modal.style.display = "flex";
+        document.body.style.overflow = "hidden";
+      });
+    });
+
+    // Close modal
+    closeModal.addEventListener("click", () => {
+      modal.style.display = "none";
+      document.body.style.overflow = "auto";
+    });
+
+    // Close modal when clicking outside
+    window.addEventListener("click", (e) => {
+      if (e.target === modal) {
+        modal.style.display = "none";
+        document.body.style.overflow = "auto";
+      }
+    });
+
+    // Terminal typing animation
+    function typeLines(lines, i = 0) {
+      if (i >= lines.length) {
+        terminalContent.innerHTML += `<br><br><span style="color: #4cc9f0; font-weight: 500;">Request submitted successfully!</span>`;
+        terminalContent.innerHTML += `<br><span style="color: #7209b7;">We'll contact you shortly with next steps.</span>`;
+        return;
+      }
+      
+      let line = lines[i];
+      if (i === 3) {
+        const textarea = document.querySelector('textarea');
+        line = line.replace(placeholder, `"${textarea.value}"`);
+      }
+      
+      terminalContent.innerHTML += `<span style="color: #e2e8f0;">${line}</span><br>`;
+      terminal.scrollTop = terminal.scrollHeight;
+      setTimeout(() => typeLines(lines, i + 1), Math.random() * 200 + 300);
+    }
+
+    // Form submission
+    form.addEventListener("submit", function(e) {
+      e.preventDefault();
+      statusMsg.textContent = "";
+      form.style.display = "none";
+      terminal.style.display = "block";
+      terminalContent.innerHTML = `<span style="color: #94a3b8;">Processing your request: <span class="typing"></span></span>`;
+
+      setTimeout(() => {
+        terminalContent.innerHTML = "";
+        typeLines(fakeCodeLines);
+      }, 1500);
+
+      // Send the form data (no need to wait for response to animate)
+      const formData = new FormData(form);
+      fetch("https://script.google.com/macros/s/AKfycbwgQycJEjcgTOaoVyDP-tcTOu-dcW2ueZxh9nnbrpKuYDmFCScLy_WXy2jc1tsdq_5t/exec", {
+        method: "POST",
+        body: formData
+      }).catch(error => {
+        console.error("Error:", error);
+        statusMsg.textContent = "There was an error submitting your request. Please try again.";
+        statusMsg.style.color = "#ef4444";
+      });
+    });
+  </script>
+</body>
+</html>
